@@ -1,0 +1,7 @@
+interface:
+  display_name: "文献总结"
+  short_description: "从 Zotero PDF 生成可追溯的 Obsidian 文献总结"
+  default_prompt: "处理我提供的 Zotero 条目键、DOI、精确题名或 PDF，生成文献总结笔记。"
+
+policy:
+  allow_implicit_invocation: true

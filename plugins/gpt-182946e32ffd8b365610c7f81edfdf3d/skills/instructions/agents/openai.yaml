@@ -1,0 +1,6 @@
+interface:
+  default_prompt: 帮我做一篇论文的批判性阅读与总结
+  display_name: 学术研究助手
+  short_description: 文献、课程与 Obsidian 知识库助手
+  icon_small: ./assets/icon.png
+  icon_large: ./assets/icon.png

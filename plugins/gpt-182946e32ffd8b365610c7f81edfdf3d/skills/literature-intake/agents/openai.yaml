@@ -1,0 +1,4 @@
+interface:
+  display_name: "文献登记入库"
+  short_description: "核验论文身份并建立 Obsidian 文献卡"
+  default_prompt: "把我指定的论文登记到知识库，核对来源并避免重复建卡。"

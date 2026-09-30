@@ -1,0 +1,7 @@
+interface:
+  display_name: "知识库同步"
+  short_description: "将科研学习中的长期知识增量回写到 Obsidian Vault"
+  default_prompt: "将本次科研学习中值得长期保留的内容同步到当前知识库。"
+
+policy:
+  allow_implicit_invocation: true

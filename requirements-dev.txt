@@ -1,0 +1,2 @@
+# PDF review fixtures and PDF page inspection. Other test code uses the stdlib.
+PyMuPDF>=1.24,<2

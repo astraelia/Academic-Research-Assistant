@@ -1,0 +1,4 @@
+interface:
+  display_name: "文献比较"
+  short_description: "比较多篇论文的方法、证据与结论"
+  default_prompt: "比较我指定的几篇论文的研究方法、主要证据和结论边界。"

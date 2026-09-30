@@ -1,0 +1,20 @@
+{
+  "name": "astraskye-local",
+  "interface": {
+    "displayName": "astraskye 本地插件"
+  },
+  "plugins": [
+    {
+      "name": "gpt-182946e32ffd8b365610c7f81edfdf3d",
+      "source": {
+        "source": "local",
+        "path": "./plugins/gpt-182946e32ffd8b365610c7f81edfdf3d"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Other"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "文献解析复核"
+  short_description: "逐页核对PDF；保留正确解析，仅修复有误文字、表格、公式或图片"
+  default_prompt: "逐页核对原论文 PDF；保留正确的 Markdown 表格、公式和图片，有误时修正并生成校验记录。"
+
+policy:
+  allow_implicit_invocation: true

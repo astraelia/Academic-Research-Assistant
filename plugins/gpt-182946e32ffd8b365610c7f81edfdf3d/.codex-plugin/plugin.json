@@ -1,0 +1,27 @@
+{
+  "interface": {
+    "capabilities": [
+      "skills"
+    ],
+    "category": "Other",
+    "composerIcon": "./assets/mint-green-ai-avatar.svg",
+    "defaultPrompt": [
+      "帮我做一篇论文的批判性阅读与总结",
+      "围绕这个主题帮我搭建文献综述框架",
+      "比较这几篇论文的研究方法与主要结论"
+    ],
+    "developerName": "astraskye",
+    "displayName": "学术研究助手",
+    "logo": "./assets/mint-green-ai-avatar.svg",
+    "longDescription": "整合文献入库、总结、精读、比较，课程资料整理，以及 Obsidian 知识库维护。",
+    "shortDescription": "文献、课程与 Obsidian 知识库助手"
+  },
+  "name": "gpt-182946e32ffd8b365610c7f81edfdf3d",
+  "version": "0.4.4",
+  "description": "整合文献处理、课程学习与 Obsidian 知识库维护的科研工作流助手。",
+  "author": {
+    "name": "astraskye"
+  },
+  "keywords": [],
+  "skills": "./skills"
+}

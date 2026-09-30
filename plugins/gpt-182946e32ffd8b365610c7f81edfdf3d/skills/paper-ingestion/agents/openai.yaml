@@ -1,0 +1,7 @@
+interface:
+  display_name: "文献解析入库"
+  short_description: "用 MinerU 校验并归档论文解析结果到 Obsidian 文献目录"
+  default_prompt: "解析并核验我提供的论文 PDF，复用对应文献目录并保存解析结果。"
+
+policy:
+  allow_implicit_invocation: true

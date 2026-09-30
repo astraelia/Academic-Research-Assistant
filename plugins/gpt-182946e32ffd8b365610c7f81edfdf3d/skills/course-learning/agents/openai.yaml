@@ -1,0 +1,7 @@
+interface:
+  display_name: "课程学习入库"
+  short_description: "整理课程资料并维护可验证的学习笔记与工件"
+  default_prompt: "整理我提供的课程资料，并按当前知识库规则增量更新课程笔记。"
+
+policy:
+  allow_implicit_invocation: true
