@@ -2,17 +2,17 @@
 
 **简体中文** | [English](README.en.md)
 
-面向科研与课程学习的 Codex 插件，将文献登记、论文总结、批判性精读、多文献比较、全文解析复核，以及 Obsidian 知识库维护整合到同一套工作流中。
+面向科研与课程学习的 Codex 插件，支持文献登记、总结、精读与比较，课程资料学习，以及 Obsidian 知识库维护。
 
-你可以从一篇论文、一份课件或一个研究问题开始，逐步积累带有来源定位的文献笔记、课程记录和知识链接。插件以原始资料为依据，区分原文事实、作者主张、推断与分析，并按当前知识库的规则保存和更新内容。
+依据原始论文、课件和教材生成带来源定位的笔记，并维护已有知识库中的索引与链接。
 
 | 项目 | 信息 |
 | --- | --- |
-| 插件显示名称 | 学术研究助手 |
-| 当前版本 | `0.4.4`，版本变化见 [CHANGELOG](CHANGELOG.md) |
-| 内置 skills | 9 个 |
-| 插件标识 | `gpt-182946e32ffd8b365610c7f81edfdf3d` |
-| Marketplace 名称 | `astraskye-local`，界面显示为“astraskye 本地插件” |
+| 功能 | 文献处理、课程学习、知识库维护 |
+| 开发者 | astraskye |
+| 类别 | 科研学习 |
+| 当前版本 | `0.4.5` · [更新记录](CHANGELOG.md) |
+| 内置 Skills | 9 个 |
 | 许可证 | [Apache License 2.0](LICENSE) |
 
 ## 目录
@@ -67,6 +67,8 @@
 | [MAINTENANCE.md](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/MAINTENANCE.md) | 维护、升级与迁移约定 |
 
 ## 安装说明
+
+安装命令使用插件标识 `gpt-182946e32ffd8b365610c7f81edfdf3d` 和 marketplace 名称 `astraskye-local`；marketplace 在界面中显示为“astraskye 本地插件”。
 
 ### 准备环境
 

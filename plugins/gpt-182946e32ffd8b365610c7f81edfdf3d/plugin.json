@@ -1,18 +1,22 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "gpt-182946e32ffd8b365610c7f81edfdf3d",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "整合文献处理、课程学习与 Obsidian 知识库维护的科研工作流助手。",
   "author": {
     "name": "astraskye"
   },
+  "homepage": "https://github.com/astraelia/Academic-Research-Assistant",
+  "repository": "https://github.com/astraelia/Academic-Research-Assistant",
   "extensions": {
     "com.openai": {
       "interface": {
         "capabilities": [
-          "skills"
+          "文献处理",
+          "课程学习",
+          "知识库维护"
         ],
-        "category": "Other",
+        "category": "科研学习",
         "composerIcon": "./assets/mint-green-ai-avatar.svg",
         "defaultPrompt": [
           "帮我做一篇论文的批判性阅读与总结",
@@ -23,7 +27,8 @@
         "displayName": "学术研究助手",
         "logo": "./assets/mint-green-ai-avatar.svg",
         "longDescription": "整合文献入库、总结、精读、比较，课程资料整理，以及 Obsidian 知识库维护。",
-        "shortDescription": "文献、课程与 Obsidian 知识库助手"
+        "shortDescription": "文献、课程与 Obsidian 知识库助手",
+        "websiteURL": "https://github.com/astraelia/Academic-Research-Assistant"
       }
     }
   }

@@ -2,17 +2,17 @@
 
 [简体中文](README.md) | **English**
 
-A Codex plugin for research and coursework, combining literature registration, paper summaries, critical reading, multi-paper comparison, reviewed full-text extraction, and Obsidian knowledge-base maintenance.
+A Codex plugin for research and course learning, with workflows for literature registration, summarization, critical reading and comparison, course material study, and Obsidian knowledge management.
 
-Start with a paper, a lecture file, or a research question, then build reusable notes and knowledge links with precise source references. The plugin works from original materials, separates paper facts and author claims from inference and analysis, and follows the current rules of your vault when saving or updating notes.
+Use original papers, slides, and textbooks to create notes with source references and maintain links and indexes in an existing knowledge vault.
 
 | Item | Details |
 | --- | --- |
-| Plugin display name | 学术研究助手 |
-| Current version | `0.4.4`; see the [changelog](CHANGELOG.md) |
-| Bundled skills | 9 |
-| Plugin identifier | `gpt-182946e32ffd8b365610c7f81edfdf3d` |
-| Marketplace name | `astraskye-local`, displayed as “astraskye 本地插件” |
+| Capabilities | Literature workflows, Course learning, Knowledge management |
+| Developer | astraskye |
+| Category | Research & Learning |
+| Current version | `0.4.5` · [Changelog](CHANGELOG.md) |
+| Included Skills | 9 |
 | License | [Apache License 2.0](LICENSE) |
 
 ## Contents
@@ -67,6 +67,8 @@ The plugin lives in [`plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/`](plugins/gp
 | [MAINTENANCE.md](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/MAINTENANCE.md) | Maintenance, upgrade, and migration conventions |
 
 ## Installation
+
+Installation commands use the plugin identifier `gpt-182946e32ffd8b365610c7f81edfdf3d` and marketplace name `astraskye-local`. The marketplace is displayed as “astraskye 本地插件” in the client.
 
 ### Prerequisites
 
