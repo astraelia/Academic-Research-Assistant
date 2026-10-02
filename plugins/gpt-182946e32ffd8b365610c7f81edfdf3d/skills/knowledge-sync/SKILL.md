@@ -7,7 +7,7 @@ description: Maintain durable, source-traceable knowledge in an Obsidian researc
 
 Maintain the vault as a small, trustworthy record of durable knowledge rather than a transcript of every exchange.
 
-In a combined plugin workflow, receive the actual output paths and evidence status from the source Skill. Update only shared links, indexes, MOCs, project/current-context notes, or other cross-note navigation; do not regenerate that Skill's literature card, summary, deep-reading note, parse bundle, comparison, or course unit. If the user asked for chat-only work, do not write.
+In a combined plugin workflow, receive the actual output paths and evidence status from the source Skill. Update only shared links, indexes, MOCs, project/current-context notes, or other cross-note navigation; do not regenerate that Skill's literature card, summary, deep-reading note, parse bundle, comparison, course unit, terminology card or terminology processing record. `terminology-management` owns term extraction, verification and writes; use its actual output/status for navigation, without repeating ingestion. If the user asked for chat-only work, do not write.
 
 ## Discover the current vault before acting
 

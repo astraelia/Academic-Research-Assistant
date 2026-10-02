@@ -1,0 +1,4 @@
+interface:
+  display_name: "学术术语管理"
+  short_description: "筛选并核验学术术语，维护知识库术语卡与跨文献阶段处理记录"
+  default_prompt: "使用 $terminology-management 检查这篇论文的术语处理记录，并将值得积累的术语核验后入库。"

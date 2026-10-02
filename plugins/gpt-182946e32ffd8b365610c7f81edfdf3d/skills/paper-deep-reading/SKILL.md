@@ -2,7 +2,7 @@
 name: paper-deep-reading
 description: Generate a source-grounded Chinese deep-reading note from one Zotero paper and its PDF, including claim-evidence analysis, essential formulas, individually cropped figures in deep-reading-specific assets, limitations, and research takeaways in an Obsidian folder. Use for a single core paper, not a lightweight summary, full bilingual translation, or formal peer-review report.
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 # Paper Deep Reading
@@ -46,6 +46,12 @@ Label content by provenance:
 
 When page indices are unreliable, use section, figure, table, equation, or source-block IDs rather than inventing a page number. If the PDF is unavailable or incomplete, set source coverage to partial-paper or abstract-metadata-only and mark unseen content 当前材料不足以判断.
 
+## Terminology handoff
+
+Read [terminology handoff](../../references/terminology-handoff.md) after resolving the paper identity and before extracting terminology. When saving to a Vault with a configured terminology library, invoke this plugin's `terminology-management` with the same identity and source version. Completed processing at intake, summary or deep reading suppresses ingestion here; read existing cards for canonical wording. Otherwise reuse already checked PDF content and finish missing terminology work. A terminology error is reported separately from the requested note's result.
+
+External glossary reading belongs to term verification and its cards; scientific claims in this note still follow the PDF source hierarchy and the user's external-literature scope. Chat-only/no-sync overrides stop all Vault writes, including terminology records.
+
 ## Workflow
 
 1. Resolve one Zotero item and primary PDF. Record the exact bibliographic title, creators, venue, year, DOI/URL, Zotero item and attachment keys, and PDF path. Check title discrepancies against the PDF before deciding a filename; do not use a translated short label or a possibly truncated attachment filename.
@@ -69,7 +75,7 @@ When page indices are unreliable, use section, figure, table, equation, or sourc
 - Evaluate claims proportionately. Use verbs such as reports, observes, supports, is consistent with, or suggests. Say demonstrates necessity/sufficiency or causes only when the design genuinely supports it.
 - Do not call an idea novel, first, state-of-the-art, or unprecedented without a user-requested and cited external prior-art check.
 - Do not turn the note into a formal reviewer report or create a self-test/quiz unless the user asks. The required critical analysis should be concrete, falsifiable, and useful to the user's research.
-- Build a terminology ledger for recurring models, variables, datasets, metrics, and abbreviations. Use one canonical term throughout the note.
+- Use existing terminology cards and a note-local ledger for recurring models, variables, datasets, metrics and abbreviations. Keep one canonical expression throughout the note; the local ledger is not a second term-card writer and does not override the shared completed-run check.
 
 ## Formula and visual protocol
 

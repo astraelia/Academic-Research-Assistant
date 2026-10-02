@@ -6,8 +6,9 @@
 
 | 字段 | 来源与用途 |
 | --- | --- |
-| Zotero item key、attachment key | 从 Zotero 或用户给定信息核验；用于匹配，Zotero 默认只读 |
+| Zotero library ID、item key、attachment key | 从 Zotero 或用户给定信息核验；用于匹配，Zotero 默认只读 |
 | DOI、准确题名、作者、年份 | 核验书目身份；与 PDF 冲突时保留差异，不静默改写 |
+| 稳定 paper_id、术语库与处理记录路径／状态 | 由术语管理首次建记录后持久保存；三个文献阶段复用同一 ID 和首次成功完成状态 |
 | 原 PDF 路径、SHA-256、版本 | 确认引用的是哪一份原文；无法取得时标明未知 |
 | Vault root、文献根目录、现有论文文件夹 | 按用户路径、Vault 当前规则和全库搜索决定 |
 | 已有文献卡、总结、精读、解析包 | 记录存在与验证状态；后续 Skill 复用而不重复生成 |
@@ -20,8 +21,12 @@
 
 ## 交接与单一写入者
 
-一个组合任务顺序执行。文献卡由 `literature-intake` 负责，总结由 `literature-summary` 负责，精读由 `paper-deep-reading` 负责；`paper-parse-review` 只改暂存解析材料，`paper-ingestion` 只归档通过复核的解析包。`literature-compare` 如需保存，只写比较笔记。`knowledge-sync` 只调整已经存在的关联笔记、索引、MOC 或当前上下文，不重写前述产物正文。课程单元由 `course-learning` 负责。
+一个组合任务顺序执行。文献卡由 `literature-intake` 负责，总结由 `literature-summary` 负责，精读由 `paper-deep-reading` 负责；`paper-parse-review` 只改暂存解析材料，`paper-ingestion` 只归档通过复核的解析包。`literature-compare` 如需保存，只写比较笔记。`terminology-management` 独占术语卡与论文处理记录写入；`knowledge-sync` 只调整已经存在的关联笔记、索引、MOC 或当前上下文，不重写前述产物正文。课程单元由 `course-learning` 负责。
 
 每一步把已确认的身份、复用的文件夹、来源覆盖、实际产物路径、未解决问题交给下一步。下一步重新检查目标文件是否已存在；更新现有笔记需符合用户的更新意图和 Vault 规则。前一步失败或证据不足时，后一步只能使用已验证范围，不能把待核对状态升级为“已验证”。
 
 对被核实的历史短名文件夹，总结/精读笔记可沿用其文件夹名，准确题名仍写入 frontmatter 与 H1；仅在明确核验该目录确属该论文后，使用共享校验器的 `--allow-legacy-folder` 标志，并在交付时说明名称差异。默认校验保持严格，不能把此标志当作免查重开关。
+
+## 术语完成状态
+
+文献入库、总结、精读按 [术语交接规则](terminology-handoff.md) 共享持久记录。只有真实全文筛查和写入校验成功才算完成，零收录可完成；等待资料、必要核验或写入中断不能完成。新 DOI 补齐关联不更换 ID；已完成记录发现新 PDF 版本只提示显式复核，默认仍跳过。外部词库按需核验，不整库导入。

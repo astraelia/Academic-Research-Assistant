@@ -2,7 +2,7 @@
 name: literature-summary
 description: Generate a compact, source-grounded Chinese summary note for one paper and save it to Obsidian. Use for “总结这篇论文”; bibliographic registration belongs to literature-intake and critical deep reading belongs to paper-deep-reading.
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 # Literature Summary
@@ -33,6 +33,12 @@ Treat sources in this strict order:
 4. Do not introduce outside knowledge unless the user explicitly asks for it. Mark it as 【外部】 and link or cite the source.
 
 Never promote an abstract, title, caption, OCR fragment, or MinerU output into a claim that the PDF does not support. If no PDF is available, offer a clearly marked metadata/abstract-only source card through `literature-intake`; do not present it as a full-paper summary.
+
+## Terminology handoff
+
+Read [terminology handoff](../../references/terminology-handoff.md) after resolving the paper identity and before extracting terminology. When saving to a Vault with a configured terminology library, invoke this plugin's `terminology-management` with the same identity and source version. Completed processing at intake, summary or deep reading suppresses ingestion here; read existing cards for canonical wording. Otherwise reuse already checked PDF content and finish missing terminology work. A terminology error is reported separately from the requested note's result.
+
+External glossary reading belongs to term verification and its cards; scientific claims in this note still follow the PDF source hierarchy and the user's external-literature scope. Chat-only/no-sync overrides stop all Vault writes, including terminology records.
 
 ## Workflow
 

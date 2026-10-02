@@ -14,10 +14,14 @@ Create or update the **source card** for one paper. The card records identity, a
 3. Read [paper identity and handoff](../../references/paper-identity-and-handoff.md). Search the whole literature subtree for the same Zotero key, normalized DOI, PDF hash, or corroborated exact title before creating a folder or card. Reuse a strong, unique match; resolve uncertain matches without making a duplicate.
 4. For a new folder, use the verified original title after filesystem-required sanitization and the Vault's current literature root/direction convention. Keep the original title in frontmatter. Do not copy the PDF into the Vault by default.
 
-## Write only the source card
+## Write the source card
 
 Use the Vault's current literature-card template or equivalent local convention. In a Vault with the documented naming pattern, the output is `文献卡—<paper-folder>.md` in the matched paper folder. Record verified title, authors, year, DOI, Zotero key, PDF path, source coverage, reading purpose, and one next action. Mark unknown values as pending; do not promote an abstract, filename, or metadata record into a full-paper finding. Add claim/evidence rows only for source regions actually inspected, with page, figure, table, or section locators. Keep the user-authored fields and prior judgments when updating an existing card; make the smallest supported change.
 
 Do not create a summary, deep-reading note, parsed full text, translation, or new MOC here. When the caller requested those, hand the resolved identity, chosen folder, card path, verified source coverage, and open questions to the responsible plugin Skill. `knowledge-sync` may then update cross-note links or indexes if requested or required by current Vault rules.
+
+## Terminology handoff
+
+After validating the source card, read [terminology handoff](../../references/terminology-handoff.md) and invoke this plugin's `terminology-management` when the Vault has a configured library and syncing is allowed. Inspect the shared paper record first. A full readable PDF permits delegated terminology screening; metadata only leaves a waiting record. Successful processing at any of the three literature stages makes the others skip ingestion. The delegated screen creates no summary/deep-reading note and does not change bibliographic reading status to completed reading.
 
 Re-read the written card, validate its frontmatter, title, source pointers, and local links, and confirm no duplicate card or paper folder was created. Report the exact files changed and any bibliographic conflict or missing PDF.

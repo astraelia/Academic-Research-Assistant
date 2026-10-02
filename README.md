@@ -11,8 +11,8 @@
 | 功能 | 文献处理、课程学习、知识库维护 |
 | 开发者 | astraskye |
 | 类别 | 科研学习 |
-| 当前版本 | `0.4.5` · [更新记录](CHANGELOG.md) |
-| 内置 Skills | 9 个 |
+| 当前版本 | `0.5.1` · [更新记录](CHANGELOG.md) |
+| 内置 Skills | 10 个 |
 | 许可证 | [Apache License 2.0](LICENSE) |
 
 ## 目录
@@ -59,7 +59,7 @@
 | --- | --- |
 | [plugin.json](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/plugin.json) | Agent Plugins 清单，声明插件身份、版本及展示信息 |
 | [.codex-plugin/plugin.json](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/.codex-plugin/plugin.json) | Codex 兼容清单，声明 skills 入口等配置 |
-| [skills/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/) | 9 个 skills 的指令、模板及支持文件 |
+| [skills/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/) | 10 个 skills 的指令、模板及支持文件 |
 | [scripts/validate_note.py](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/scripts/validate_note.py) | 总结与精读共用的笔记结构、图片链接及数学格式校验器 |
 | [references/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/references/) | 论文身份匹配及跨 skill 交接规则 |
 | [tests/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/tests/) | 笔记校验、文献查重等回归测试 |
@@ -120,6 +120,7 @@ codex plugin list --marketplace astraskye-local --json
 | [literature-intake](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-intake/SKILL.md) | 核实题名、DOI、Zotero key 和原 PDF 来源，查找既有论文目录，建立或更新文献卡，记录阅读目的与待办。 | 文献卡及来源指针 |
 | [literature-summary](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-summary/SKILL.md) | 为单篇论文生成简明中文总结，覆盖研究问题、方法、证据、贡献和局限；为主要结论保留原文定位，并保存相关图表裁图。 | `总结—…md`、`assets/summary-figures/` |
 | [paper-deep-reading](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-deep-reading/SKILL.md) | 重建单篇核心论文的论证逻辑，建立主张与证据对应关系，分析关键公式、研究设计、图表、结论边界及可迁移思路。 | `精读—…md`、`assets/deep-figures/` |
+| [terminology-management](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/terminology-management/SKILL.md) | 筛选和核验值得积累的学术术语，维护术语卡与每篇论文的持久处理记录。文献入库、总结和精读共享首次成功完成状态。 | 术语卡、处理记录与待审核候选 |
 | [literature-compare](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-compare/SKILL.md) | 围绕同一问题比较两篇或更多论文，整理假设、方法、数据、指标、结果与局限，说明可比性和证据差异。默认在聊天中交付，明确要求时保存。 | 比较矩阵及分析；按需保存比较笔记 |
 | [paper-ingestion](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-ingestion/SKILL.md) | 对单篇原 PDF 进行身份匹配和查重，协调外部 MinerU 解析，交给逐页复核流程，再将通过检查的解析包归档到对应论文目录。 | `paper.md`、解析清单、复核记录及 `assets/parsed/` |
 | [paper-parse-review](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-parse-review/SKILL.md) | 逐页对照原 PDF 检查解析文本、阅读顺序、图表与公式，在暂存区纠错并记录证据。保留准确图像，表格与公式采用 Markdown；未完成的复核保留待核对状态。 | 修正后的暂存解析包、`parse-audit.json`、`parse-review.md` |
@@ -184,6 +185,15 @@ Vault：<知识库路径>
 | 登记、精读并更新索引 | `literature-intake` → `paper-deep-reading` → `knowledge-sync` |
 | 解析并归档全文 | `paper-ingestion` 解析与暂存 → `paper-parse-review` 逐页复核 → `paper-ingestion` 归档 |
 | 整理课程并更新跨课程索引 | `course-learning` → 按需 `knowledge-sync` |
+
+
+### 学术术语积累
+
+文献入库、总结和精读会检查同一篇论文的术语处理记录：任一阶段成功完成后，其余阶段跳过重复提取和入库。有完整 PDF 才能完成筛查；只有书目或中断时保留待处理状态。全文筛查零收录也记为完成。
+
+术语库初始放在 Vault 根目录的 `61_学术术语库`，与图谱并列；执行时读取当前规则和模板，并兼容目录改名。已有术语增量补充，个人备注和既有首选表达保留。公开词库按需读取具体条目核验，不导入外部整库。
+
+可显式调用 `$terminology-management` 查询、补充单个术语、复核某篇论文或检查术语库。历史文献批量补建须单独确定范围；聊天回答或“不要同步”时不写入。实现和状态字段见 [术语交接规则](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/references/terminology-handoff.md)。
 
 ## 产物与来源规则
 

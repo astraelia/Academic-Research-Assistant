@@ -11,8 +11,8 @@ Use original papers, slides, and textbooks to create notes with source reference
 | Capabilities | Literature workflows, Course learning, Knowledge management |
 | Developer | astraskye |
 | Category | Research & Learning |
-| Current version | `0.4.5` · [Changelog](CHANGELOG.md) |
-| Included Skills | 9 |
+| Current version | `0.5.1` · [Changelog](CHANGELOG.md) |
+| Included Skills | 10 |
 | License | [Apache License 2.0](LICENSE) |
 
 ## Contents
@@ -59,7 +59,7 @@ The plugin lives in [`plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/`](plugins/gp
 | --- | --- |
 | [plugin.json](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/plugin.json) | Agent Plugins manifest: identity, version, and display metadata |
 | [.codex-plugin/plugin.json](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/.codex-plugin/plugin.json) | Codex compatibility manifest, including the skills entry point |
-| [skills/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/) | Instructions, templates, and support files for 9 skills |
+| [skills/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/) | Instructions, templates, and support files for 10 skills |
 | [scripts/validate_note.py](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/scripts/validate_note.py) | Shared summary/deep-reading validator for note structure, image links, and math formatting |
 | [references/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/references/) | Paper identity matching and cross-skill handoff rules |
 | [tests/](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/tests/) | Regression tests for note validation and paper identity matching |
@@ -120,6 +120,7 @@ All skills live under the plugin's `skills/` directory. Each subdirectory has a 
 | [literature-intake](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-intake/SKILL.md) | Verifies the title, DOI, Zotero key, and PDF source; finds an existing paper folder; creates or updates a source card with reading purpose and next actions. | Literature source card and source pointers |
 | [literature-summary](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-summary/SKILL.md) | Produces a compact Chinese summary of one paper's question, method, evidence, contribution, and limitations, with source locators and relevant figure/table crops. | `总结—…md` and `assets/summary-figures/` |
 | [paper-deep-reading](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-deep-reading/SKILL.md) | Reconstructs one core paper's argument, maps claims to evidence, and analyzes essential equations, study design, visuals, conclusion boundaries, and transferable research ideas. | `精读—…md` and `assets/deep-figures/` |
+| [terminology-management](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/terminology-management/SKILL.md) | Screen and verify reusable academic terms; maintain term cards and persistent paper records shared by intake, summary and deep reading. | Term cards, run records and pending candidates |
 | [literature-compare](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/literature-compare/SKILL.md) | Compares at least two papers against the same question, covering assumptions, methods, data, metrics, results, limitations, and comparability. Returns the comparison in chat by default; saves it when requested. | Comparison matrix and analysis; optional comparison note |
 | [paper-ingestion](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-ingestion/SKILL.md) | Resolves and deduplicates one PDF, coordinates external MinerU extraction, hands the staged result to page-by-page review, and archives the bundle after its checks pass. | `paper.md`, parse manifest, review records, and `assets/parsed/` |
 | [paper-parse-review](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/skills/paper-parse-review/SKILL.md) | Compares parsed text, reading order, visuals, and equations with every original PDF page; corrects staged output and records evidence. Preserves accurate images and uses Markdown for tables and equations. Incomplete reviews retain their pending status. | Corrected staging bundle, `parse-audit.json`, and `parse-review.md` |
@@ -184,6 +185,15 @@ Common combined workflows:
 | Register, read in depth, and update indexes | `literature-intake` → `paper-deep-reading` → `knowledge-sync` |
 | Parse and archive full text | `paper-ingestion` extraction and staging → `paper-parse-review` page-by-page review → `paper-ingestion` archival |
 | Organize a course and update shared course indexes | `course-learning` → `knowledge-sync` when needed |
+
+
+### Academic terminology
+
+Intake, summary and deep reading check the same persistent paper record. The first successful full-paper terminology screen suppresses ingestion in all later stages and chats. Metadata-only or interrupted work stays unfinished; a complete screen with zero accepted terms can finish.
+
+The initial library lives at the Vault root as `61_学术术语库`, alongside the graph; current rules/templates and moved destinations are rediscovered. Existing entities receive incremental evidence while preferred names and personal notes are preserved. Read selected public glossary entries as evidence; never import external glossaries wholesale.
+
+Use `$terminology-management` explicitly to query/add a term, supplement one paper or check the library. Historical batch backfill needs a separately scoped request. Chat-only/no-sync requests produce no Vault writes. See the [terminology handoff](plugins/gpt-182946e32ffd8b365610c7f81edfdf3d/references/terminology-handoff.md) for implementation and state rules.
 
 ## Outputs and source rules
 
